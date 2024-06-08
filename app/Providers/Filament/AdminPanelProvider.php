@@ -14,6 +14,7 @@ use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use App\Filament\Resources\OrderResource\Widgets\OrderRessource;
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
@@ -23,6 +24,7 @@ class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
+
         return $panel
             ->default()
             ->id('admin')
@@ -49,7 +51,7 @@ class AdminPanelProvider extends PanelProvider
                 VerifyCsrfToken::class,
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
-                DispatchServingFilamentEvent::class,
+                DispatchServingFilamentEvent::class
             ])
             ->authMiddleware([
                 Authenticate::class,
