@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->date('deadline');
             $table->text('images');
-            $table->string('status')->default('new-order');
+            $table->string('status')->default('New Order');
             $table->timestamps();
         });
         
