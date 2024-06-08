@@ -2,6 +2,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\OrderResource\Pages;
+use App\Filament\Resources\OrderResource\Widgets\OrderRessource; // Import your widget here
 use App\Models\Order;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -23,7 +24,12 @@ class OrderResource extends Resource
                     ->required(),
                 Forms\Components\DatePicker::make('deadline')
                     ->required(),
-                Forms\Components\TextInput::make('status')
+                Forms\Components\Select::make('status')
+                    ->options([
+                        'New Order' => 'New Order',
+                        'Arrivé' => 'Arrivé',
+                        'Refuser' => 'Refuser',
+                    ])
                     ->required(),
             ]);
     }
@@ -37,7 +43,10 @@ class OrderResource extends Resource
                 Tables\Columns\TextColumn::make('deadline')->sortable(),
                 Tables\Columns\TextColumn::make('status')->sortable(),
             ])
-            ->filters([])
+            ->filters([]) 
+            ->headerActions([
+                Tables\Actions\CreateAction::make(), 
+            ])
             ->defaultSort('id', 'desc');
     }
 

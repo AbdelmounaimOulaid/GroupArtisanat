@@ -1,0 +1,25 @@
+/* public/css/custom.css */
+
+.custom-header {
+    display: flex;
+    justify-content: flex-end; /* Adjust as needed */
+    padding: 10px; /* Adjust as needed */
+}
+
+.create-button {
+    /* Add custom styles for the button container */
+}
+
+.create-button button {
+    background-color: #4CAF50; /* Custom background color */
+    color: white; /* Custom text color */
+    padding: 10px 20px; /* Custom padding */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    /* Add other custom styles as needed */
+}
+
+.create-button button:hover {
+    background-color: #45a049; /* Custom hover color */
+}
