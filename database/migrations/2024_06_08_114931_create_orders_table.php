@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->date('deadline');
+            $table->text('images');
             $table->string('status')->default('new-order');
             $table->timestamps();
         });
