@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\OrderResource\Pages;
@@ -15,7 +16,6 @@ class OrderResource extends Resource
     protected static ?string $model = Order::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-folder';
-
 
     public static function form(Form $form): Form
     {
@@ -59,16 +59,16 @@ class OrderResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
                 Tables\Columns\ImageColumn::make('images')
-                ->circular()
-                ->stacked(),
+                    ->circular()
+                    ->stacked(),
                 Tables\Columns\TextColumn::make('description')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('deadline')->sortable(),
                 Tables\Columns\TextColumn::make('status')->sortable(),
             ])
             ->filters([])
-            ->defaultSort('id', 'desc') 
+            ->defaultSort('id', 'desc')
             ->headerActions([
-                Tables\Actions\CreateAction::make(), 
+                Tables\Actions\CreateAction::make(),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
@@ -78,7 +78,7 @@ class OrderResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);;
+            ]);
     }
 
     public static function getPages(): array
@@ -88,16 +88,8 @@ class OrderResource extends Resource
             'view' => Pages\ViewOrder::route('/{record}'),
             'create' => Pages\CreateOrder::route('/create'),
             'edit' => Pages\EditOrder::route('/{record}/edit'),
-
+            'show' => Pages\ShowOrder::route('/show/{record}'),
         ];
     }
-
-    public static function canAccess(): bool
-    {
-        return auth()->user()->name == 'admin';
-        
-    
-    }
-
-
+   
 }

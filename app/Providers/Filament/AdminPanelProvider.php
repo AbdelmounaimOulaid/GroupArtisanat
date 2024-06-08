@@ -49,7 +49,9 @@ class AdminPanelProvider extends PanelProvider
                 VerifyCsrfToken::class,
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
-                DispatchServingFilamentEvent::class
+                DispatchServingFilamentEvent::class,
+                \App\Http\Middleware\RedirectFilament::class,
+
             ])
             ->authMiddleware([
                 Authenticate::class,
