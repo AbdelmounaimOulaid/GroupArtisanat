@@ -2,7 +2,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\OrderResource\Pages;
-use App\Filament\Resources\OrderResource\Widgets\OrderRessource; // Import your widget here
 use App\Models\Order;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -10,7 +9,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Forms\Components\Card;
-use Illuminate\Support\Facades\Log;
 
 class OrderResource extends Resource
 {
@@ -35,7 +33,7 @@ class OrderResource extends Resource
                         Forms\Components\DatePicker::make('deadline')
                             ->required()
                             ->columnSpan(1),
-                            Forms\Components\TextInput::make('taille')
+                        Forms\Components\TextInput::make('taille')
                             ->required()
                             ->columnSpan(1),
                         Forms\Components\Select::make('status')
