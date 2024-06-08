@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->string('taille');
             $table->date('deadline');
             $table->text('images');
             $table->string('status')->default('New Order');
