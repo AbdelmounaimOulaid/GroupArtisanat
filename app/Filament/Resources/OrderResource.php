@@ -2,6 +2,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\OrderResource\Pages;
+use App\Filament\Resources\OrderResource\Widgets\OrderRessource; // Import your widget here
 use App\Models\Order;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -34,15 +35,19 @@ class OrderResource extends Resource
                         Forms\Components\DatePicker::make('deadline')
                             ->required()
                             ->columnSpan(1),
-                        Forms\Components\TextInput::make('status')
-                            ->required()
-                            ->columnSpan(1),
+                        Forms\Components\Select::make('status')
+                            ->options([
+                                'New Order' => 'New Order',
+                                'Arrivé' => 'Arrivé',
+                                'Refuser' => 'Refuser',
+                            ])
+                            ->required(),
                         Forms\Components\FileUpload::make('images')
                             ->multiple()
                             ->disk('public')
                             ->directory('/storage/orders')
                             ->required()
-                            ->columnSpan(1),
+                            ->columnSpan(1)
                     ]),
             ]);
     }
@@ -61,6 +66,9 @@ class OrderResource extends Resource
             ])
             ->filters([])
             ->defaultSort('id', 'desc') 
+            ->headerActions([
+                Tables\Actions\CreateAction::make(), 
+            ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
