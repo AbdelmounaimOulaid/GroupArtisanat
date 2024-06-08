@@ -18,7 +18,7 @@
         <x-filament::section class="rounded p-2">
             <div class="flex mb-5">
                 <p class="mb-2"><span style="background-color: {{ $color }}; border-radius: 5px; padding: 10px;font-size:20px;font-weight:bold">{{ $diff }}</span></p>
-                <p class="mb-2 ml-2 text-lg">Size: {{ $order->taille }}</p>
+                <p class="mb-2 ml-2 text-lg">{{ $order->taille }}</p>
             </div>
             @foreach($order->images as $image)
             <a href="{{ asset('storage/' . $image) }}" data-lightbox="order-{{ $order->id }}">
@@ -26,18 +26,8 @@
             </a>
             @endforeach    
             <p class="mt-3 text-lg">Posted On: {{ $order->created_at }}</p>
-            <div x-data="{ open: false }">
-                <p class="mt-2">
-                    <button @click="open = !open" class="focus:outline-none flex justify-between items-center hover:border-b-2">
-                         Description
-                        <span x-show="!open" class="transform -rotate-180 ml-2 ">&#x25BD;</span> <!-- Arrow pointing down -->
-                        <span x-show="open" class="ml-2 ">&#x25BD;</span> 
-                    </button>
-                </p>
-                <div x-show="open" x-transition:enter="transition ease-out duration-400" x-transition:leave="transition ease-in duration-400" class="mt-2">
-                    {{ $order->description }}
-                </div>
-            </div>
+            <p class="mt-3 text-lg">{{ $order->description }}</p>
+
 
             </x-filament::section>
             @empty
