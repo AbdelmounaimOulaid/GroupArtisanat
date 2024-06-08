@@ -20,11 +20,11 @@
                 <p class="mb-2"><span style="background-color: {{ $color }}; border-radius: 5px; padding: 10px;font-size:20px;font-weight:bold">{{ $diff }}</span></p>
                 <p class="mb-2 ml-2 text-lg">{{ $order->taille }}</p>
             </div>
-            @foreach($order->images as $image)
-            <a href="{{ asset('storage/' . $image) }}" data-lightbox="order-{{ $order->id }}">
-                <img class="rounded p-2 border" src="{{ asset('storage/' . $image) }}" alt="Order Image">
-            </a>
-            @endforeach    
+          
+            <a href="{{ asset('storage/' . $order->images[0]) }}" data-lightbox="order-{{ $order->id }}">
+                    <img class="rounded h-[300px] p-2 border" src="{{ asset('storage/' . $order->images[0]) }}" alt="Order Image">
+                </a>
+        
             <p class="mt-3 text-lg">Posted On: {{ $order->created_at }}</p>
             <p class="mt-3 text-lg">{{ $order->description }}</p>
 
