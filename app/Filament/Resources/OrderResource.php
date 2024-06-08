@@ -28,11 +28,14 @@ class OrderResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->required()
-                            ->columnSpan(1),
+                            ->columnSpan(2),
                         Forms\Components\Textarea::make('description')
                             ->required()
                             ->columnSpan(2),
                         Forms\Components\DatePicker::make('deadline')
+                            ->required()
+                            ->columnSpan(1),
+                            Forms\Components\TextInput::make('taille')
                             ->required()
                             ->columnSpan(1),
                         Forms\Components\Select::make('status')
