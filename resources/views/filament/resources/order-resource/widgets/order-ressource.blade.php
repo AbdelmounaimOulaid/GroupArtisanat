@@ -1,6 +1,6 @@
-<x-filament-widgets::widget style="--cols-lg: none;" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    @forelse($orders as $order)
-        @php
+<x-filament-widgets::widget style="--cols-lg: none; --cols-md: none;" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    @forelse($orders as $index => $order)
+    @php
             $deadline = \Carbon\Carbon::parse($order->deadline);
             $created_at = \Carbon\Carbon::parse($order->created_at);
             $diff = $deadline->diffInDays($created_at);
@@ -16,16 +16,31 @@
             }
         @endphp
         <x-filament::section class="rounded p-2">
-            <p class="mb-2">Days until deadline: <span style="background-color: {{ $color }};padding:10px; border-radius: 5px; padding: 2px;">{{ $diff }}</span></p>
-            <p class="mb-2">Taille: {{ $order->taille }}</p>
-            <p class="mb-2">Order Description: {{ $order->description }}</p>
+            <div class="flex mb-5">
+                <p class="mb-2"><span style="background-color: {{ $color }}; border-radius: 5px; padding: 10px;font-size:20px;font-weight:bold">{{ $diff }}</span></p>
+                <p class="mb-2 ml-2 text-lg">Size: {{ $order->taille }}</p>
+            </div>
             @foreach($order->images as $image)
-                <a href="{{ asset('storage/' . $image) }}" data-lightbox="order-{{ $order->id }}">
-                    <img class="rounded p-2 border" src="{{ asset('storage/' . $image) }}" alt="Order Image">
-                </a>
+            <a href="{{ asset('storage/' . $image) }}" data-lightbox="order-{{ $order->id }}">
+                <img class="rounded p-2 border" src="{{ asset('storage/' . $image) }}" alt="Order Image">
+            </a>
             @endforeach    
-        </x-filament::section>
-    @empty
-        <p class="text-center">No data</p>
-    @endforelse
+            <p class="mt-3 text-lg">Posted On: {{ $order->created_at }}</p>
+            <div x-data="{ open: false }">
+                <p class="mt-2">
+                    <button @click="open = !open" class="focus:outline-none flex justify-between items-center hover:border-b-2">
+                         Description
+                        <span x-show="!open" class="transform -rotate-180 ml-2 ">&#x25BD;</span> <!-- Arrow pointing down -->
+                        <span x-show="open" class="ml-2 ">&#x25BD;</span> 
+                    </button>
+                </p>
+                <div x-show="open" x-transition:enter="transition ease-out duration-400" x-transition:leave="transition ease-in duration-400" class="mt-2">
+                    {{ $order->description }}
+                </div>
+            </div>
+
+            </x-filament::section>
+            @empty
+                <p class="text-center">No data</p>
+            @endforelse
 </x-filament-widgets::widget>
