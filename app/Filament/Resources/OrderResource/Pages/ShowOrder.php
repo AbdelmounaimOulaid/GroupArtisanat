@@ -20,6 +20,4 @@ class ShowOrder extends Page
         $this->record = $this->resolveRecord($record);
     }
 
-
-
 }

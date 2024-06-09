@@ -2,8 +2,8 @@
 
 namespace App\Filament\Resources\OrderResource\Pages;
 
-use Filament\Resources\Pages\CreateRecord;
 use App\Filament\Resources\OrderResource;
+use Filament\Resources\Pages\CreateRecord;
 
 class CreateOrder extends CreateRecord
 {

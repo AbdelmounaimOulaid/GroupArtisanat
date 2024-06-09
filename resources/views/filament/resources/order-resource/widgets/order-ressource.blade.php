@@ -5,11 +5,11 @@
             $created_at = \Carbon\Carbon::parse($order->created_at);
             $diff = $deadline->diffInDays($created_at);
             $color = '';
-            if ($diff >= 10) {
+            if ($diff <= 10) {
                 $color = '#F1CD2E'; // darker yellow
-            } elseif ($diff >= 4) {
+            } elseif ($diff <= 4) {
                 $color = '#1FABF1'; // darker blue
-            } elseif ($diff >= 1) {
+            } elseif ($diff <= 1) {
                 $color = '#E95142'; // darker red
             } else {
                 $color = '#56C453'; // darker green

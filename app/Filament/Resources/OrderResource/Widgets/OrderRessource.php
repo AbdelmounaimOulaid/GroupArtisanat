@@ -14,6 +14,6 @@ class OrderRessource extends Widget
     ];
     public $orders = array();
     public function __construct(){
-        $this->orders = Order::all();
+        $this->orders = Order::orderBy('deadline', 'asc')->get();
     }
 }

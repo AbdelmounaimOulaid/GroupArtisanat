@@ -2,8 +2,6 @@
 
 namespace App\Filament\Resources\OrderResource\Pages;
 
-namespace App\Filament\Resources\OrderResource\Pages;
-
 use Filament\Resources\Pages\EditRecord;
 use App\Filament\Resources\OrderResource;
 

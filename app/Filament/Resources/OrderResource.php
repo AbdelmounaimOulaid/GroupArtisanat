@@ -30,10 +30,10 @@ class OrderResource extends Resource
                         Forms\Components\Textarea::make('description')
                             ->required()
                             ->columnSpan(2),
-                        Forms\Components\DatePicker::make('deadline')
-                            ->required()
-                            ->columnSpan(1),
                         Forms\Components\TextInput::make('taille')
+                                ->required()
+                                ->columnSpan(2),
+                        Forms\Components\DatePicker::make('deadline')
                             ->required()
                             ->columnSpan(1),
                         Forms\Components\Select::make('status')
@@ -66,13 +66,14 @@ class OrderResource extends Resource
                 Tables\Columns\TextColumn::make('status')->sortable(),
             ])
             ->filters([])
-            ->defaultSort('id', 'desc')
+            ->defaultSort('deadline', 'asc')
             ->headerActions([
                 Tables\Actions\CreateAction::make(),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -85,8 +86,6 @@ class OrderResource extends Resource
     {
         return [
             'index' => Pages\ListOrders::route('/'),
-            'view' => Pages\ViewOrder::route('/{record}'),
-            'create' => Pages\CreateOrder::route('/create'),
             'edit' => Pages\EditOrder::route('/{record}/edit'),
             'show' => Pages\ShowOrder::route('/show/{record}'),
         ];
