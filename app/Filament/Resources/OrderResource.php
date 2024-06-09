@@ -62,7 +62,7 @@ class OrderResource extends Resource
                     ->circular()
                     ->stacked(),
                 Tables\Columns\TextColumn::make('description')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('deadline')->sortable(),
+                Tables\Columns\TextColumn::make('deadline')->sortable()->badge(),
                 Tables\Columns\TextColumn::make('status')->sortable(),
             ])
             ->filters([])
