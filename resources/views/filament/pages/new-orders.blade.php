@@ -1,5 +1,5 @@
 <x-filament-panels::page>
-    <div class="grid grid-cols-3 gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div class="">
 
         @forelse($orders as $index => $order)
        <?php
@@ -25,7 +25,7 @@
                 <a href="/orders/show/{{ $order->id }}">
                     <div class="flex mb-5">
                         <p class="mb-2"><span style="background-color: {{ $color }}; border-radius: 5px; padding: 10px;font-size:20px;font-weight:bold">{{ $diff }}</span></p>
-                        <p class="mb-2 ml-2 text-lg font-bold">{{ $order->taille }}</p>
+                        <p class="mb-2 ml-2 text-lg font-bold whitespace-nowrap">{{ $order->taille }}</p>
                     </div>
 
 
