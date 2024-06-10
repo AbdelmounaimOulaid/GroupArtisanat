@@ -23,7 +23,7 @@ class RedirectFilament
             // Get the authenticated user
             $user = Auth::user();
             
-            if ($user && $user->name !== 'admin') {
+            if ($user && $user->role == 'fournisseur') {
                 // Redirect to /admin
                 return redirect('/admin');
             }

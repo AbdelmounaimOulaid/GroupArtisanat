@@ -11,7 +11,7 @@ class CreateOrder extends CreateRecord
 
     public static function canAccess(array $parameters = []): bool
     {        
-        return auth()->user()->id==1;
+        return auth()->user()->role != 'fournisseur';
         
     }
 }

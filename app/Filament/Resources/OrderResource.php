@@ -20,9 +20,6 @@ class OrderResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Card::make()
-                    ->columns(2)
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->required()
@@ -49,8 +46,7 @@ class OrderResource extends Resource
                             ->directory('/storage/orders')
                             ->required()
                             ->columnSpan(1)
-                    ]),
-            ]);
+                            ]);
     }
 
     public static function table(Table $table): Table
@@ -67,9 +63,6 @@ class OrderResource extends Resource
             ])
             ->filters([])
             ->defaultSort('deadline', 'asc')
-            ->headerActions([
-                Tables\Actions\CreateAction::make(),
-            ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
