@@ -2,15 +2,15 @@
     @forelse($orders as $index => $order)
     @php
             $deadline = \Carbon\Carbon::parse($order->deadline);
-            $created_at = \Carbon\Carbon::parse($order->created_at);
+            $created_at = \Carbon\Carbon::now();
             $diff = $deadline->diffInDays($created_at);
             $color = '';
-            if ($diff <= 10) {
-                $color = '#F1CD2E'; // darker yellow
+            if ($diff <= 1) {
+        $color = '#E95142'; // darker red
             } elseif ($diff <= 4) {
                 $color = '#1FABF1'; // darker blue
-            } elseif ($diff <= 1) {
-                $color = '#E95142'; // darker red
+            } elseif ($diff <= 10) {
+                $color = '#F1CD2E'; // darker yellow
             } else {
                 $color = '#56C453'; // darker green
             }
