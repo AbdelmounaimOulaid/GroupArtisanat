@@ -19,13 +19,13 @@ class RedirectFilament
     {
         $currentRouteName = $request->getRequestUri();
 
-        if ($currentRouteName == '/admin/orders') {
+        if ($currentRouteName == '/orders') {
             // Get the authenticated user
             $user = Auth::user();
             
-            if ($user && $user->name !== 'admin') {
+            if ($user && $user->role == 'fournisseur') {
                 // Redirect to /admin
-                return redirect('/admin');
+                return redirect('/');
             }
         }
 
