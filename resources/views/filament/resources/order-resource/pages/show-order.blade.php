@@ -1,34 +1,39 @@
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
-<x-filament-panels::page>        
-@php
-    $deadline = \Carbon\Carbon::parse($record->deadline);
-    $created_at = \Carbon\Carbon::now();
-    $diff = $deadline->diffInDays($created_at);
-    $color = '';
-    if ($diff <= 1) {
-        $color = '#E95142'; // darker red
-    } elseif ($diff <= 4) {
-        $color = '#1FABF1'; // darker blue
-    } elseif ($diff <= 10) {
-        $color = '#F1CD2E'; // darker yellow
-    } else {
-        $color = '#56C453'; // darker green
-    }
-@endphp
-<x-filament::section class="rounded text-center">
-        <div class="flex mb-5 justify-between">
-            <p class="mb-2"><span style="background-color: {{ $color }}; border-radius: 5px; padding: 15px;font-size:30px;font-weight:bold">{{ $diff }}</span></p>
-            <p class="mb-2 ml-2 text-4xl">{{ $record->taille }}</p>
+<x-filament-panels::page>
+    @php
+        $deadline = \Carbon\Carbon::parse($record->deadline);
+        $created_at = \Carbon\Carbon::now();
+        $diff = $deadline->diffInDays($created_at);
+        $color = '';
+        if ($diff <= 1) {
+            $color = '#E95142'; // darker red
+        } elseif ($diff <= 4) {
+            $color = '#1FABF1'; // darker blue
+        } elseif ($diff <= 10) {
+            $color = '#F1CD2E'; // darker yellow
+        } else {
+            $color = '#56C453'; // darker green
+        }
+    @endphp
+    <x-filament::section class="rounded lg:text-center">
+        <div class="flex flex-col mb-5 lg:flex-row lg:justify-between">
+            <p class="mb-2"><span
+                    style="background-color: {{ $color }};"
+                    class="lg:p-[10px] rounded-md lg:text-[30px] text-[20px] p-[5px] font-bold"
+                    >{{ $diff }}</span>
+            </p>
+            <p class="mb-2 ml-2 text-lg font-bold lg:text-2xl">{{ $record->taille }}</p>
         </div>
-        
+
         <!-- Swiper Main Gallery -->
         <div class="swiper mySwiper2 lg:w-[60%] lg:h-[60%]">
             <div class="swiper-wrapper">
-                @foreach($record->images as $image)
+                @foreach ($record->images as $image)
                     <div class="swiper-slide">
-                        <img class="rounded w-full h-full object-cover border mt-2" src="{{ asset('storage/' . $image) }}" alt="Order Image">
+                        <img class="object-cover w-full h-full mt-2 border rounded"
+                            src="{{ asset('storage/' . $image) }}" alt="Order Image">
                     </div>
                 @endforeach
             </div>
@@ -39,18 +44,19 @@
         <!-- Swiper Thumbnail Gallery -->
         <div class="swiper mySwiper mt-5 lg:w-[60%] lg:h-[60%]">
             <div class="swiper-wrapper">
-                @foreach($record->images as $image)
+                @foreach ($record->images as $image)
                     <div class="swiper-slide">
-                        <img class="rounded w-full lg:h-[150px] h-[70px]  object-cover border mt-2" src="{{ asset('storage/' . $image) }}" alt="Order Image">
+                        <img class="rounded w-full lg:h-[150px] h-[70px]  object-cover border mt-2"
+                            src="{{ asset('storage/' . $image) }}" alt="Order Image">
                     </div>
                 @endforeach
             </div>
         </div>
-        
+
         <p class="mt-3 text-lg">Posted On: {{ $record->created_at }}</p>
         <p class="mt-3 text-xl font-semibold">{{ $record->description }}</p>
-    
-</x-filament::section>
+
+    </x-filament::section>
 </x-filament-panels::page>
 
 <!-- Swiper JS -->
