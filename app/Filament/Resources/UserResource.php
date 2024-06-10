@@ -13,7 +13,7 @@ use Filament\Tables\Table;
 
 class UserResource extends Resource
 {
-    protected static ?string $model = User::class;
+    protected static ?int $navigationSort = 5;
 
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
@@ -45,7 +45,7 @@ class UserResource extends Resource
                     return true;
                 })
                 ->columnSpan(1),
-            
+
             ]);
     }
 
@@ -85,8 +85,8 @@ class UserResource extends Resource
     }
 
     public static function canAccess(array $parameters = []): bool
-    {        
+    {
         return auth()->user()->role == 'admin';
-        
+
     }
 }

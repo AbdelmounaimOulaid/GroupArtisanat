@@ -13,7 +13,7 @@ use Filament\Forms\Components\Card;
 
 class OrderResource extends Resource
 {
-    protected static ?string $model = Order::class;
+    protected static ?int $navigationSort = 4;
 
     protected static ?string $navigationIcon = 'heroicon-o-folder';
 
@@ -35,9 +35,9 @@ class OrderResource extends Resource
                             ->columnSpan(1),
                         Forms\Components\Select::make('status')
                             ->options([
-                                'New Order' => 'New Order',
-                                'Arrivé' => 'Arrivé',
-                                'Refuser' => 'Refuser',
+                                'new' => 'New Order',
+                                'arriver' => 'Arrivé',
+                                'refuser' => 'Refuser',
                             ])
                             ->required(),
                         Forms\Components\FileUpload::make('images')
@@ -83,5 +83,5 @@ class OrderResource extends Resource
             'show' => Pages\ShowOrder::route('/show/{record}'),
         ];
     }
-   
+
 }

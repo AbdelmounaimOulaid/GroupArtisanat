@@ -1,4 +1,4 @@
-<x-filament-widgets::widget style="--cols-lg: none; --cols-md: none;" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<x-filament-widgets::widget style="--cols-lg: none; --cols-md: none;" class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
     @forelse($orders as $index => $order)
     @php
             $deadline = \Carbon\Carbon::parse($order->deadline);
@@ -15,21 +15,21 @@
                 $color = '#56C453'; // darker green
             }
         @endphp
-        
-        <x-filament::section class="rounded p-2">
+
+        <x-filament::section class="p-2 rounded">
             <a href="/admin/orders/show/{{ $order->id }}">
                 <div class="flex mb-5">
                     <p class="mb-2"><span style="background-color: {{ $color }}; border-radius: 5px; padding: 10px;font-size:20px;font-weight:bold">{{ $diff }}</span></p>
                     <p class="mb-2 ml-2 text-lg">{{ $order->taille }}</p>
                 </div>
-                
-                
+
+
                     <img class="rounded h-[300px] p-2 border" src="{{ asset('storage/' . $order->images[0]) }}" alt="Order Image">
-                
-                
+
+
                 <p class="mt-3 text-lg">Posted On: {{ $order->created_at }}</p>
                 <p class="mt-3 text-lg">{{ $order->description }}</p>
-                
+
             </a>
 
             </x-filament::section>
