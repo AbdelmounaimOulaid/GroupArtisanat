@@ -4,12 +4,12 @@
 <x-filament-panels::page>        
 @php
     $deadline = \Carbon\Carbon::parse($record->deadline);
-    $created_at = \Carbon\Carbon::parse($record->created_at);
+    $created_at = \Carbon\Carbon::now();
     $diff = $deadline->diffInDays($created_at);
     $color = '';
     if ($diff <= 1) {
         $color = '#E95142'; // darker red
-    }  elseif ($diff <= 4) {
+    } elseif ($diff <= 4) {
         $color = '#1FABF1'; // darker blue
     } elseif ($diff <= 10) {
         $color = '#F1CD2E'; // darker yellow
