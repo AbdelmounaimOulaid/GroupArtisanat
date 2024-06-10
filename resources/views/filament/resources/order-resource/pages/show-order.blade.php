@@ -7,12 +7,12 @@
     $created_at = \Carbon\Carbon::parse($record->created_at);
     $diff = $deadline->diffInDays($created_at);
     $color = '';
-    if ($diff <= 10) {
-        $color = '#F1CD2E'; // darker yellow
-    } elseif ($diff <= 4) {
-        $color = '#1FABF1'; // darker blue
-    } elseif ($diff <= 1) {
+    if ($diff <= 1) {
         $color = '#E95142'; // darker red
+    }  elseif ($diff <= 4) {
+        $color = '#1FABF1'; // darker blue
+    } elseif ($diff <= 10) {
+        $color = '#F1CD2E'; // darker yellow
     } else {
         $color = '#56C453'; // darker green
     }
