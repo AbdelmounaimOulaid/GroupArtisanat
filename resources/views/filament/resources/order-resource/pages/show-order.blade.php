@@ -5,9 +5,12 @@
     @php
         $deadline = \Carbon\Carbon::parse($record->deadline);
         $created_at = \Carbon\Carbon::now();
-        $diff = $deadline->diffInDays($created_at);
+        $diff = $created_at->diffInDays($deadline, false); // Get signed difference
         $color = '';
-        if ($diff <= 1) {
+
+        if ($diff < 0) {
+            $color = '#E95142'; // darker red for past deadlines
+        } elseif ($diff <= 1) {
             $color = '#E95142'; // darker red
         } elseif ($diff <= 4) {
             $color = '#1FABF1'; // darker blue
