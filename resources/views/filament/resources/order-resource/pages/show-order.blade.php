@@ -22,11 +22,14 @@
     @endphp
     <x-filament::section class="rounded lg:text-center">
         <div class="flex flex-col mb-5 lg:flex-row lg:justify-between">
-            <p class="mb-2"><span
-                    style="background-color: {{ $color }};"
-                    class="lg:p-[10px] rounded-md lg:text-[30px] text-[20px] p-[5px] font-bold"
-                    >{{ $diff }}</span>
-            </p>
+            <div style="display: flex; flex-direction: row;">
+                <p class="mb-2"><span
+                        style="background-color: {{ $color }}; border-radius: 5px; padding: 10px;font-size:20px;font-weight:bold">{{ $diff }}</span>
+                </p>
+                <p style="width: 100%; display: flex;justify-content: center;font-weight: bolder;">
+                    <span>{{ $record->name }}</span>
+                </p>
+            </div>
             <p class="mb-2 ml-2 text-lg font-bold lg:text-2xl">{{ $record->taille }}</p>
         </div>
 

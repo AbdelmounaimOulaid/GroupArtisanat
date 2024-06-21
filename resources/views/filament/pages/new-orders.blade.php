@@ -1,3 +1,6 @@
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
 <x-filament-panels::page>
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
 
@@ -35,8 +38,31 @@ $diff = $created_at->diffInDays($deadline, false);
                     </div>
 
 
-                    <img class="rounded h-[300px] p-2 border" src="{{ asset('storage/' . $order->images[0]) }}"
-                        alt="Order Image">
+                     <!-- Swiper Main Gallery -->
+            <div class="swiper mySwiper2 rounded h-[300px] p-2 border">
+                <div class="swiper-wrapper">
+                    @foreach ($order->images as $image)
+                        <div class="swiper-slide">
+                            <img class="object-cover w-full h-full mt-2 border rounded"
+                                src="{{ asset('storage/' . $image) }}" alt="Order Image">
+                        </div>
+                    @endforeach
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+
+            <!-- Swiper Thumbnail Gallery -->
+            <div click="javascript:void(0)" class="swiper mySwiper mt-5 lg:w-[60%] lg:h-[60%]">
+                <div class="swiper-wrapper">
+                    @foreach ($order->images as $image)
+                        <div class="swiper-slide">
+                            <img class="rounded w-full lg:h-[150px] h-[70px]  object-cover border mt-2"
+                                src="{{ asset('storage/' . $image) }}" alt="Order Image">
+                        </div>
+                    @endforeach
+                </div>
+            </div>
 
 
                     <p class="mt-3 text-lg">Posted On: {{ $order->created_at }}</p>
@@ -50,3 +76,25 @@ $diff = $created_at->diffInDays($deadline, false);
         @endforelse
     </div>
 </x-filament-panels::page>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesProgress: true,
+    });
+    var swiper2 = new Swiper(".mySwiper2", {
+        spaceBetween: 10,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        thumbs: {
+            swiper: swiper,
+        },
+    });
+</script>
