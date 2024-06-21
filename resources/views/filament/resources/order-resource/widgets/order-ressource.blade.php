@@ -3,7 +3,7 @@
     @php
            $deadline = \Carbon\Carbon::parse($record->deadline);
     $created_at = \Carbon\Carbon::now();
-    $diff = $deadline->diffInDays($created_at);
+    $diff = $deadline->diffInDays($created_at, false);
     $color = '';
     if ($diff <= 1) {
         $color = '#E95142'; // darker red
