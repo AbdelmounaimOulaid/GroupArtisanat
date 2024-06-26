@@ -47,5 +47,21 @@
         "type": "image/png",
         "sizes": "512x512"
       }
+    ],
+    "screenshots" : [
+        {
+          "src": "/img/screenshot.jpeg",
+          "sizes": "661x1216",
+          "type": "image/jpeg",
+          "form_factor": "wide",
+          "label": "Homescreen of Awesome App"
+        },
+        {
+          "src": "/img/screenshot.jpeg",
+          "sizes": "661x1216",
+          "type": "image/jpeg",
+          "form_factor": "narrow",
+          "label": "Homescreen of Awesome App"
+        }
     ]
   }
