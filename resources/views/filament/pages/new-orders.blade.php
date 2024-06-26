@@ -1,4 +1,5 @@
 <head>
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <x-filament-panels::page>
@@ -36,9 +37,9 @@ $diff = $created_at->diffInDays($deadline, false);
                         </div>
                         <p class="mt-5 ml-2 text-lg font-bold whitespace-nowrap">{{ $order->taille }}</p>
                     </div>
-                
 
-                    
+
+
                              <!-- Swiper Main Gallery -->
                     <div class="swiper mySwiper2 rounded h-[300px] p-2 border">
                         <div class="swiper-wrapper">
