@@ -59,7 +59,13 @@ class OrderResource extends Resource
                     ->stacked(),
                 Tables\Columns\TextColumn::make('description')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('deadline')->sortable()->badge(),
-                Tables\Columns\TextColumn::make('status')->sortable(),
+                Tables\Columns\SelectColumn::make('status')
+                            ->options([
+                                'new' => 'New Order',
+                                'arriver' => 'Arrivé',
+                                'refuser' => 'Refuser',
+                            ])->rules(['required'])
+                            ,
             ])
             ->filters([])
             ->defaultSort('deadline', 'asc')

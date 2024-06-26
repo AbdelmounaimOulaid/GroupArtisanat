@@ -27,9 +27,6 @@ $diff = $created_at->diffInDays($deadline, false);
                 <a href="/orders/show/{{ $order->id }}">
                     <div class="flex flex-col mb-5">
                         <div style="display: flex; flex-direction: row;">
-                            <p class="mb-2"><span
-                                    style="background-color: {{ $color }}; border-radius: 5px; padding: 10px;font-size:20px;font-weight:bold">{{ $diff }}</span>
-                            </p>
                             <p style="width: 100%; display: flex;justify-content: center;font-weight: bolder;">
                                 <span>{{ $order->name }}</span>
                             </p>
@@ -38,32 +35,33 @@ $diff = $created_at->diffInDays($deadline, false);
                     </div>
 
 
-                     <!-- Swiper Main Gallery -->
-            <div class="swiper mySwiper2 rounded h-[300px] p-2 border">
-                <div class="swiper-wrapper">
-                    @foreach ($order->images as $image)
-                        <div class="swiper-slide">
-                            <img class="object-cover w-full h-full mt-2 border rounded"
-                                src="{{ asset('storage/' . $image) }}" alt="Order Image">
-                        </div>
-                    @endforeach
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
 
-            <!-- Swiper Thumbnail Gallery -->
-            <div click="javascript:void(0)" class="swiper mySwiper mt-5 lg:w-[60%] lg:h-[60%]">
-                <div class="swiper-wrapper">
-                    @foreach ($order->images as $image)
-                        <div class="swiper-slide">
-                            <img class="rounded w-full lg:h-[150px] h-[70px]  object-cover border mt-2"
-                                src="{{ asset('storage/' . $image) }}" alt="Order Image">
+                             <!-- Swiper Main Gallery -->
+                    <div class="swiper mySwiper2 rounded h-[300px] p-2 border">
+                        <div class="swiper-wrapper">
+                            @foreach ($order->images as $image)
+                                <div class="swiper-slide">
+                                    <img class="object-cover w-full h-full mt-2 border rounded"
+                                        src="{{ asset('storage/' . $image) }}" alt="Order Image">
+                                </div>
+                            @endforeach
                         </div>
-                    @endforeach
-                </div>
-            </div>
-
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                     @if(count($order->images) > 1 )
+                    <!-- Swiper Thumbnail Gallery -->
+                    <div click="javascript:void(0);" class="swiper mySwiper mt-5 lg:w-[60%] lg:h-[60%]">
+                        <div click="javascript:void(0);" class="swiper-wrapper">
+                            @foreach ($order->images as $image)
+                                <div click="javascript:void(0);" class="swiper-slide">
+                                    <img click="javascript:void(0);" class="rounded w-full lg:h-[70px] h-[70px]  object-cover border mt-2"
+                                        src="{{ asset('storage/' . $image) }}" alt="Order Image">
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    @endif
 
                     <p class="mt-3 text-lg">Posted On: {{ $order->created_at }}</p>
                     <p class="mt-3 text-lg" style="font-weight:bold;">{{ $order->description }}</p>
