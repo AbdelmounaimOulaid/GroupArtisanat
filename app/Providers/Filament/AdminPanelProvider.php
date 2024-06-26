@@ -52,6 +52,7 @@ class AdminPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
                 \App\Http\Middleware\RedirectFilament::class,
+                \App\Http\Middleware\AddMetaTags::class,
 
             ])
             ->authMiddleware([
